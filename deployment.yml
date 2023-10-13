@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: http-deployment
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   app: http
+ template:
+  metadata:
+   labels:
+    app: http
+  spec:
+   containers:
+   - name: rdncontainer
+     image: public.ecr.aws/g7l4n5q7/rdncontainer:v1
+     ports:
+     - containerPort: 80
